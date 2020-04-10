@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,5 +30,9 @@ public class Tables {
 
     public boolean isOrdered(int tableNumber) {
         return findTableByNumber(tableNumber).isOrdered();
+    }
+
+    public List<Table> getTables() {
+        return Collections.unmodifiableList(tables);
     }
 }

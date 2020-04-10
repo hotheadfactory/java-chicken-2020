@@ -11,7 +11,20 @@ public class InputView {
     }
 
     public static int inputMenuNumber() {
+        System.out.println("## 등록할 메뉴를 입력하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputMenuAmount() {
         System.out.println("## 메뉴의 수량을 입력하세요.");
+        return scanner.nextInt();
+    }
+
+    public static int inputMainScreenCommand() {
+        System.out.println("## 메인화면");
+        System.out.println("1. 주문등록");
+        System.out.println("2. 결제하기");
+        System.out.println("3. 프로그램 종료");
         return scanner.nextInt();
     }
 }

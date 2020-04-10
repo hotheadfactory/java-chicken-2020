@@ -7,23 +7,23 @@ import java.util.*;
  *
  * @author hotheadfactory
  */
-public class Menus {
+public class OrderedMenus {
     private final Map<Menu, Integer> menus;
 
-    public Menus(Map<Menu, Integer> menus) {
+    public OrderedMenus(Map<Menu, Integer> menus) {
         this.menus = Collections.unmodifiableMap(menus);
     }
 
-    public Menus() {
+    public OrderedMenus() {
         this(new HashMap<>());
     }
 
-    public Menus addMenu(Menu menu, int amount) {
+    public OrderedMenus addMenu(Menu menu, int amount) {
         Map<Menu, Integer> menusCache = new HashMap<>(menus);
         if(menusCache.putIfAbsent(menu, amount) != null) {
             menusCache.put(menu, menusCache.get(menu) + amount);
         }
-        return new Menus(menusCache);
+        return new OrderedMenus(menusCache);
     }
 
     public boolean isOrdered() {

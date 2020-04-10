@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  * @author hotheadfactory
  */
-public class MenusTest {
+public class OrderedMenusTest {
     @Test
     void menuOrderTest() {
-        Menus menus = new Menus();
-        assertFalse(menus.isOrdered());
-        menus = menus.addMenu(MenuRepository.menus().get(1), 1);
-        assertTrue(menus.isOrdered());
+        OrderedMenus orderedMenus = new OrderedMenus();
+        assertFalse(orderedMenus.isOrdered());
+        orderedMenus = orderedMenus.addMenu(MenuRepository.menus().get(1), 1);
+        assertTrue(orderedMenus.isOrdered());
     }
 }

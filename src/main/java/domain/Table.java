@@ -2,7 +2,7 @@ package domain;
 
 public class Table {
     private final int number;
-    private Menus menus = new Menus();
+    private OrderedMenus orderedMenus = new OrderedMenus();
 
     public Table(final int number) {
         this.number = number;
@@ -13,11 +13,11 @@ public class Table {
     }
 
     public void orderMenu(Menu menu, int amount) {
-        this.menus = menus.addMenu(menu, amount);
+        this.orderedMenus = orderedMenus.addMenu(menu, amount);
     }
 
     public boolean isOrdered() {
-        return menus.isOrdered();
+        return orderedMenus.isOrdered();
     }
 
     @Override
