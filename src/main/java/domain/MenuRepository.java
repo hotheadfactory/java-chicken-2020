@@ -26,7 +26,7 @@ public class MenuRepository {
 
     public static Menu findByNumber(int i) {
         return menus.stream()
-                .filter(menu -> menu.isNumber(i))
+                .filter(menu -> menu.isNumberOf(i))
                 .findFirst()
                 .orElseThrow(() -> new NoMenuException("없는 메뉴 번호 입니다."));
     }
