@@ -24,9 +24,8 @@ public class ChickenPOSController {
     private final List<Menu> menus = MenuRepository.menus();
 
     public void run() {
-        while (InputView.inputMainScreenCommand() != 3) {
-            order();
-        }
+        order();
+        order();
         checkout();
     }
 
@@ -53,9 +52,10 @@ public class ChickenPOSController {
     private void calculatePrice(int tableNumber) {
         int paymentChoice = InputView.inputPaymentMethod(tableNumber);
         PaymentMethod paymentMethod = PaymentSelector.getPaymentMethod(paymentChoice);
-        paymentMethod.getBill(
+        int price = paymentMethod.getBill(
                 tables.checkOut(tableNumber)
         );
+        OutputView.printPrice(price);
     }
 
     private int askTableNumber() {
