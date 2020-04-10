@@ -4,6 +4,7 @@ import exception.OrderLimitException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,5 +28,12 @@ public class OrderedMenusTest {
                 .isInstanceOf(OrderLimitException.class)
                 .hasMessageContaining("더 이상");
 
+    }
+
+    @Test
+    void checkOutTest() {
+        OrderedMenus orderedMenus = new OrderedMenus();
+        orderedMenus = orderedMenus.addMenu(MenuRepository.menus().get(1), 15);
+        assertThat(orderedMenus.checkOut()).isEqualTo(240000);
     }
 }
