@@ -24,9 +24,17 @@ public class ChickenPOSController {
     private final List<Menu> menus = MenuRepository.menus();
 
     public void run() {
-        order();
-        order();
-        checkout();
+        int selection = InputView.inputMainScreenCommand();
+        if (selection == 3) {
+            return;
+        }
+        if (selection == 1) {
+            order();
+        }
+        if (selection == 2) {
+            checkout();
+        }
+        run();
     }
 
     private void order() {
