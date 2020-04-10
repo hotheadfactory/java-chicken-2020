@@ -1,4 +1,4 @@
-package domain;
+package domain.payment;
 
 /**
  * 결제 방식을 정의한 인터페이스
