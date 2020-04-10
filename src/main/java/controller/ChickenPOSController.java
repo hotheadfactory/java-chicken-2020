@@ -4,6 +4,9 @@ import domain.Menu;
 import domain.MenuRepository;
 import domain.TableRepository;
 import domain.Tables;
+import domain.payment.PaymentMethod;
+import domain.payment.PaymentSelector;
+import dto.OrderedMenusDto;
 import view.InputView;
 import view.OutputView;
 
@@ -37,8 +40,22 @@ public class ChickenPOSController {
 
     private void checkout() {
         final int tableNumber = askTableNumber();
-        OutputView.printBill(tables.checkBillOf(tableNumber));
-        InputView.inputPaymentMethod(tableNumber);
+        listOrderedMenus(tableNumber);
+        calculatePrice(tableNumber);
+        tables.clean(tableNumber);
+    }
+
+    private void listOrderedMenus(int tableNumber) {
+        OrderedMenusDto orderedMenus = tables.checkBillOf(tableNumber);
+        OutputView.printBill(orderedMenus);
+    }
+
+    private void calculatePrice(int tableNumber) {
+        int paymentChoice = InputView.inputPaymentMethod(tableNumber);
+        PaymentMethod paymentMethod = PaymentSelector.getPaymentMethod(paymentChoice);
+        paymentMethod.getBill(
+                tables.checkOut(tableNumber)
+        );
     }
 
     private int askTableNumber() {

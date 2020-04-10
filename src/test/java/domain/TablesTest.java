@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -19,5 +20,14 @@ public class TablesTest {
         Tables tables = new Tables(new ArrayList<>(TableRepository.tables()));
         tables.order(1, MenuRepository.findByNumber(1), 2);
         assertTrue(tables.isOrdered(1));
+    }
+
+    @Test
+    @DisplayName("테이블을 치우는 것을 테스트")
+    void cleanTableTest() {
+        Tables tables = new Tables(new ArrayList<>(TableRepository.tables()));
+        tables.order(1, MenuRepository.findByNumber(4), 3);
+        tables.clean(1);
+        assertFalse(tables.isOrdered(1));
     }
 }

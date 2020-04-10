@@ -3,7 +3,7 @@ package domain.payment;
 import java.util.Arrays;
 
 /**
- * class description
+ * 지불 방법 선택자
  *
  * @author hotheadfactory
  */

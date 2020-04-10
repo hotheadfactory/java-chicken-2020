@@ -26,6 +26,14 @@ public class Table {
         return orderedMenus.toDto();
     }
 
+    public int checkOut() {
+        return orderedMenus.checkOut();
+    }
+
+    public void clean() {
+        this.orderedMenus = new OrderedMenus();
+    }
+
     @Override
     public String toString() {
         return Integer.toString(number);

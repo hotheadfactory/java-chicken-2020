@@ -30,6 +30,16 @@ public class Tables {
         table.orderMenu(menu, amount);
     }
 
+    public int checkOut(int tableNumber) {
+        Table table = findTableByNumber(tableNumber);
+        return table.checkOut();
+    }
+
+    public void clean(int tableNumber) {
+        Table table = findTableByNumber(tableNumber);
+        table.clean();
+    }
+
     public boolean isOrdered(int tableNumber) {
         return findTableByNumber(tableNumber).isOrdered();
     }
@@ -41,4 +51,6 @@ public class Tables {
     public TablesDto toDto() {
         return new TablesDto(Collections.unmodifiableList(tables));
     }
+
+
 }
