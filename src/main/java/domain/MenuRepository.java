@@ -1,5 +1,7 @@
 package domain;
 
+import exception.NoMenuException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +28,6 @@ public class MenuRepository {
         return menus.stream()
                 .filter(menu -> menu.isNumber(i))
                 .findFirst()
-        .orElseThrow(() -> new IllegalArgumentException("없는 메뉴 번호 입니다."));
+                .orElseThrow(() -> new NoMenuException("없는 메뉴 번호 입니다."));
     }
 }
