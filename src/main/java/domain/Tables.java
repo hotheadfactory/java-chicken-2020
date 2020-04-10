@@ -1,11 +1,12 @@
 package domain;
 
-import java.util.ArrayList;
+import dto.TablesDto;
+
 import java.util.Collections;
 import java.util.List;
 
 /**
- * class description
+ * 현재 존재하는 테이블들을 저장하는 클래스
  *
  * @author hotheadfactory
  */
@@ -32,7 +33,7 @@ public class Tables {
         return findTableByNumber(tableNumber).isOrdered();
     }
 
-    public List<Table> getTables() {
-        return Collections.unmodifiableList(tables);
+    public TablesDto toDto() {
+        return new TablesDto(Collections.unmodifiableList(tables));
     }
 }

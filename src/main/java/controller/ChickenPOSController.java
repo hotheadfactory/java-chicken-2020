@@ -1,6 +1,9 @@
 package controller;
 
-import domain.*;
+import domain.Menu;
+import domain.MenuRepository;
+import domain.TableRepository;
+import domain.Tables;
 import view.InputView;
 import view.OutputView;
 
@@ -24,11 +27,19 @@ public class ChickenPOSController {
     }
 
     private void order() {
-        OutputView.printTables(tables.getTables());
-        final int tableNumber = InputView.inputTableNumber();
+        final int tableNumber = askTableNumber();
         OutputView.printMenus(menus);
         final int orderedMenu = InputView.inputMenuNumber();
         final int amount = InputView.inputMenuAmount();
         tables.order(tableNumber, MenuRepository.findByNumber(orderedMenu), amount);
+    }
+
+    private void checkout() {
+        final int tableNumber = askTableNumber();
+    }
+
+    private int askTableNumber() {
+        OutputView.printTables(tables.toDto());
+        return InputView.inputTableNumber();
     }
 }

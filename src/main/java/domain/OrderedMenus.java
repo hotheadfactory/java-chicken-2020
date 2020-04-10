@@ -1,9 +1,11 @@
 package domain;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * class description
+ * 주문한 메뉴들을 저장하는 클래스
  *
  * @author hotheadfactory
  */

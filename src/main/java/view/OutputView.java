@@ -2,6 +2,7 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import dto.TablesDto;
 
 import java.util.List;
 
@@ -10,8 +11,9 @@ public class OutputView {
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE_FORMAT = "└ %s ┘";
 
-    public static void printTables(final List<Table> tables) {
+    public static void printTables(TablesDto tablesDto) {
         System.out.println("## 테이블 목록");
+        List<Table> tables = tablesDto.getTables();
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
