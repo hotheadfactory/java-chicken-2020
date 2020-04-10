@@ -11,6 +11,7 @@ import java.util.List;
 public class ChickenPOSApplication {
     // TODO 구현 진행
     public static void main(String[] args) {
-        ChickenPOSController.run();
+        ChickenPOSController controller = new ChickenPOSController();
+        controller.run();
     }
 }
