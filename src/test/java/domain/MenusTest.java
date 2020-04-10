@@ -15,7 +15,7 @@ public class MenusTest {
     void menuOrderTest() {
         Menus menus = new Menus();
         assertFalse(menus.isOrdered());
-        menus = menus.addMenu(MenuRepository.menus().get(1));
+        menus = menus.addMenu(MenuRepository.menus().get(1), 1);
         assertTrue(menus.isOrdered());
     }
 }

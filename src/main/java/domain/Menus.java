@@ -1,8 +1,6 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * class description
@@ -10,19 +8,21 @@ import java.util.List;
  * @author hotheadfactory
  */
 public class Menus {
-    private final List<Menu> menus;
+    private final Map<Menu, Integer> menus;
 
-    public Menus(List<Menu> menus) {
-        this.menus = Collections.unmodifiableList(menus);
+    public Menus(Map<Menu, Integer> menus) {
+        this.menus = Collections.unmodifiableMap(menus);
     }
 
     public Menus() {
-        this(new ArrayList<>());
+        this(new HashMap<>());
     }
 
-    public Menus addMenu(Menu menu) {
-        List<Menu> menusCache = new ArrayList<>(menus);
-        menusCache.add(menu);
+    public Menus addMenu(Menu menu, int amount) {
+        Map<Menu, Integer> menusCache = new HashMap<>(menus);
+        if(menusCache.putIfAbsent(menu, amount) != null) {
+            menusCache.put(menu, menusCache.get(menu) + amount);
+        }
         return new Menus(menusCache);
     }
 

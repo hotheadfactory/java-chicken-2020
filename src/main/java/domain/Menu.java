@@ -17,4 +17,8 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+
+    public boolean isNumber(int i) {
+        return this.number == i;
+    }
 }
