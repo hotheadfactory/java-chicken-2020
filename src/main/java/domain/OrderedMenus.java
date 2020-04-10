@@ -1,6 +1,7 @@
 package domain;
 
 import dto.OrderedMenusDto;
+import exception.OrderLimitException;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,10 +26,19 @@ public class OrderedMenus {
 
     public OrderedMenus addMenu(Menu menu, int amount) {
         Map<Menu, Integer> menusCache = new HashMap<>(menus);
+        if (totalCount() >= 99) {
+            throw new OrderLimitException("더 이상 주문할 수 없습니다.");
+        }
         if (menusCache.putIfAbsent(menu, amount) != null) {
             menusCache.put(menu, menusCache.get(menu) + amount);
         }
         return new OrderedMenus(menusCache);
+    }
+
+    private int totalCount() {
+        return menus.values().stream()
+                .reduce(Integer::sum)
+                .orElse(0);
     }
 
     public boolean isOrdered() {
