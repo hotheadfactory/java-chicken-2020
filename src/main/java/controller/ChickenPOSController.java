@@ -24,6 +24,7 @@ public class ChickenPOSController {
         while (InputView.inputMainScreenCommand() != 3) {
             order();
         }
+        checkout();
     }
 
     private void order() {
@@ -36,6 +37,8 @@ public class ChickenPOSController {
 
     private void checkout() {
         final int tableNumber = askTableNumber();
+        OutputView.printBill(tables.checkBillOf(tableNumber));
+        InputView.inputPaymentMethod(tableNumber);
     }
 
     private int askTableNumber() {

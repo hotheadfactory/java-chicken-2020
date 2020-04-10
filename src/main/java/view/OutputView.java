@@ -2,9 +2,11 @@ package view;
 
 import domain.Menu;
 import domain.Table;
+import dto.OrderedMenusDto;
 import dto.TablesDto;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -48,9 +50,20 @@ public class OutputView {
     }
 
     private static String orderLightParser(Table table) {
-        if(table.isOrdered()) {
+        if (table.isOrdered()) {
             return "￦";
         }
         return "-";
+    }
+
+    public static void printBill(OrderedMenusDto orderedMenusDto) {
+        Map<Menu, Integer> orderedMenus = orderedMenusDto.getOrderedMenus();
+        System.out.println("## 주문 내역\n메뉴 수량 금액");
+        for (Menu menu : orderedMenus.keySet()) {
+            int amount = orderedMenus.get(menu);
+            int totalPricePerMenu = menu.getPrice() * amount;
+            System.out.println(menu.getName() + " " + amount + " " + totalPricePerMenu);
+        }
+        System.out.println();
     }
 }

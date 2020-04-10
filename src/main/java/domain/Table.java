@@ -1,5 +1,7 @@
 package domain;
 
+import dto.OrderedMenusDto;
+
 public class Table {
     private final int number;
     private OrderedMenus orderedMenus = new OrderedMenus();
@@ -18,6 +20,10 @@ public class Table {
 
     public boolean isOrdered() {
         return orderedMenus.isOrdered();
+    }
+
+    public OrderedMenusDto checkBill() {
+        return orderedMenus.toDto();
     }
 
     @Override

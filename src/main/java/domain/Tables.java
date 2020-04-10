@@ -1,5 +1,6 @@
 package domain;
 
+import dto.OrderedMenusDto;
 import dto.TablesDto;
 
 import java.util.Collections;
@@ -31,6 +32,10 @@ public class Tables {
 
     public boolean isOrdered(int tableNumber) {
         return findTableByNumber(tableNumber).isOrdered();
+    }
+
+    public OrderedMenusDto checkBillOf(int tableNumber) {
+        return findTableByNumber(tableNumber).checkBill();
     }
 
     public TablesDto toDto() {

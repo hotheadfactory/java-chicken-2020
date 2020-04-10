@@ -25,6 +25,12 @@ public class InputView {
         System.out.println("1. 주문등록");
         System.out.println("2. 결제하기");
         System.out.println("3. 프로그램 종료");
-        return scanner.nextInt();
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    public static int inputPaymentMethod(int tableNumber) {
+        System.out.printf("## %d번 테이블의 결제를 진행합니다.\n", tableNumber);
+        System.out.println("## 신용 카드는 1번, 현금은 2번");
+        return Integer.parseInt(scanner.nextLine());
     }
 }

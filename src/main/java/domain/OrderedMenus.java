@@ -1,5 +1,7 @@
 package domain;
 
+import dto.OrderedMenusDto;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +24,7 @@ public class OrderedMenus {
 
     public OrderedMenus addMenu(Menu menu, int amount) {
         Map<Menu, Integer> menusCache = new HashMap<>(menus);
-        if(menusCache.putIfAbsent(menu, amount) != null) {
+        if (menusCache.putIfAbsent(menu, amount) != null) {
             menusCache.put(menu, menusCache.get(menu) + amount);
         }
         return new OrderedMenus(menusCache);
@@ -30,5 +32,9 @@ public class OrderedMenus {
 
     public boolean isOrdered() {
         return menus.size() > 0;
+    }
+
+    public OrderedMenusDto toDto() {
+        return new OrderedMenusDto(Collections.unmodifiableMap(menus));
     }
 }
